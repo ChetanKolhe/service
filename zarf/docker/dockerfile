@@ -14,9 +14,9 @@ ARG BUILD_DATE
 ARG BUILD_REF
 RUN addgroup -g 1000 -S sales && \
     adduser -u 1000 -h /service -G sales -S sales
-COPY --from=buils_sales-api /service /service/service
+COPY --from=buils_sales-api /service/services /service/services
 WORKDIR /service
-CMD ["./sales-api"]
+CMD ["./services"]
 
 LABEL org.opencontainers.image.created="${BUILD_DATE}" \
       org.opencontainers.image.title="sales-api" \
