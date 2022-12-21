@@ -13,7 +13,7 @@ import (
 
 var build = "develop"
 
-func main2() {
+func main() {
 	// numberCpu := runtime.NumCPU()
 	// =========================================================================
 	// GOMAXPROCS

@@ -11,12 +11,12 @@ build:
 # $(shell git rev-parse --short HEAD)
 VERSION := 1.0
 
-all: service
+all: sales-api
 
-service:
+sales-api:
 	docker build \
-		-f zarf/docker/dockerfile \
-		-t service:$(VERSION) \
+		-f zarf/docker/dockerfile.sales-api \
+		-t sales-api:$(VERSION) \
 		--build-arg BUILD_REF=$(VERSION) \
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
 		.
@@ -50,7 +50,7 @@ kind-apply:
 
 
 kind-load:
-	kind load docker-image service:$(VERSION) --name $(KIND_CLUSTER)
+	kind load docker-image sales-api:$(VERSION) --name $(KIND_CLUSTER)
 
 kind-restart:
 	kubectl rollout restart deployment service-pod --namespace=service-system
